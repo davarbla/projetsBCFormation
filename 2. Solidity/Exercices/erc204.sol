@@ -16,18 +16,23 @@ contract useERC20  {
     IERC20 interfaceToken;
     mapping(address => bool) isFromContract;
 
+    modifier mustBeCreatedHere(address _addr) {
+        require(isFromContract[_addr], "this token cant be transfered here");
+        _;
+    }
+
     function createToken(string calldata _name, string calldata symbol, uint initialSupply) external {
         address newToken = address(new MyToken(_name, symbol, initialSupply));
         isFromContract[newToken]=true;
 
     }
 
-    function transferToken(address _addr, address _to, uint _amount) external {
+    function transferToken(address _addr, address _to, uint _amount) external mustBeCreatedHere(_addr){
         interfaceToken = IERC20(_addr);
         interfaceToken.transfer(_to, _amount);
     }
 
-    function transferFromToken(address _addr, address _from, address _to, uint _amount) external {
+    function transferFromToken(address _addr, address _from, address _to, uint _amount) external mustBeCreatedHere(_addr){
         interfaceToken = IERC20(_addr);
         interfaceToken.transferFrom(_from, _to, _amount);
     }
