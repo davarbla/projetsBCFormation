@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol";
 
-//1E.Votre smart contract doit s�appeler �Voting�.
-contract Voting is Ownable {
+//1E.Votre smart contract doit s�appeler �VotingPlus�.
+contract VotingPlus is Ownable {
     //3A.L�administrateur est celui qui va d�ployer le smart contract.
     constructor() Ownable(msg.sender) {}
 
