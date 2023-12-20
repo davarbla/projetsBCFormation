@@ -5,7 +5,7 @@ const { ethers } = require('hardhat')
 const { expect, assert } = require('chai')
 
 async function deployCagnotteFixture() {
-    [owner, addr1, addr2, addr3] = await ethers.getSigners()
+    const [owner, addr1, addr2, addr3] = await ethers.getSigners()
     let goal = ethers.parseEther('5')
     let contract = await ethers.getContractFactory('Cagnotte')
     cagnotte = await contract.deploy(goal)
@@ -13,7 +13,7 @@ async function deployCagnotteFixture() {
 }
 
 async function deployCagnotteWithDepositsButNotEnoughFixture() {
-    [owner, addr1, addr2, addr3] = await ethers.getSigners()
+    const [owner, addr1, addr2, addr3] = await ethers.getSigners()
 
     let goal = ethers.parseEther('5')
     let contract = await ethers.getContractFactory('Cagnotte')
@@ -29,7 +29,7 @@ async function deployCagnotteWithDepositsButNotEnoughFixture() {
 }
 
 async function deployCagnotteWithDepositsEnoughGoalFixture() {
-    [owner, addr1, addr2, addr3] = await ethers.getSigners()
+    const [owner, addr1, addr2, addr3] = await ethers.getSigners()
     
     let goal = ethers.parseEther('5')
     let contract = await ethers.getContractFactory('Cagnotte')
