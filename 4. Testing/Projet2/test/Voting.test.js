@@ -544,11 +544,18 @@ describe(`TEST OF THE SMART CONTRACT: ${TEST_CONTRACT}`, () =>  {
       expect(await voting.winningProposalID()).to.equal(voteId);
     });
 
-    it("Should get winner proposal id as any user", async () => {
+    it("Should get winner proposal id as owner", async () => {
       expect(await voting.winningProposalID()).to.equal(voteId);
+    });
+
+    it("Should get winner proposal id as voter", async () => {
       expect(await voting.connect(this.voter1).winningProposalID()).to.equal(voteId);
+    });
+
+    it("Should get winner proposal id as unregistered user", async () => {
       expect(await voting.connect(this.unregisteredUser).winningProposalID()).to.equal(voteId);
     });
+
   });
   
 

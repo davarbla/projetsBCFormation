@@ -27,7 +27,7 @@ There are 3 kinds of users profile: owner, voter and  unregistered user.
 
 ##Coverage
 
-45 tests passing
+47 tests passing
 All functions has been tested
 100% coverage
 
